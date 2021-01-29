@@ -1,0 +1,25 @@
+helmDefaults:
+  wait: true
+  timeout: 600
+  historyMax: 50
+  createNamespace: true
+
+repositories:
+  - name: prometheus
+    url: https://prometheus-community.github.io/helm-charts
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+  - name: prometheus
+    namespace: mon
+    version: 13.2.1
+    createNamespace: true
+    chart: prometheus/prometheus
+    atomic: true
+
+  - name: redis
+    namespace: redis
+    version: 11.3.4
+    chart: bitnami/redis
+    atomic: true
